@@ -1,0 +1,174 @@
+{
+	"$schema": "../printer-definition.schema.json",
+	"name": "V2.4 AWD",
+	"description": "CoreXY printer with floating gantry from Voron Design with All-Wheel Drive (4 CoreXY motors). Requires a 9-driver control board such as the BTT Octopus Max EZ.",
+	"manufacturer": "Voron Design",
+	"documentationLink": "https://os.ratrig.com/docs/printers/v-24",
+	"image": "voron-v24-awd.png",
+	"template": "voron-v24-printer.template.cfg",
+	"driverCountRequired": 9,
+	"sizes": {
+		"250": {
+			"x": 250,
+			"y": 250,
+			"z": 210
+		},
+		"300": {
+			"x": 300,
+			"y": 300,
+			"z": 260
+		},
+		"350": {
+			"x": 350,
+			"y": 350,
+			"z": 310
+		}
+	},
+	"speedLimits": {
+		"basic": {
+			"accel": 5000,
+			"velocity": 400,
+			"z_accel": 350,
+			"z_velocity": 20,
+			"travel_accel": 5000,
+			"travel_velocity": 400
+		},
+		"performance": {
+			"accel": 20000,
+			"velocity": 800,
+			"z_accel": 500,
+			"z_velocity": 60,
+			"travel_accel": 10000,
+			"travel_velocity": 800
+		}
+	},
+	"defaults": {
+		"board": "btt-octopus-max-ez",
+		"toolheads": [
+			{
+				"axis": "x",
+				"extruder": "clockwork-2",
+				"hotend": "dragon-high-flow",
+				"partFan": "4pin",
+				"hotendFan": "2pin",
+				"probe": "probe",
+				"xEndstop": "endstop",
+				"yEndstop": "endstop"
+			}
+		],
+		"rails": [
+			{
+				"axis": "x",
+				"axisDescription": "The A motor (front-left) in the AWD CoreXY system",
+				"current": 1.768,
+				"voltage": 48,
+				"performanceMode": {
+					"current": 2.121,
+					"voltage": 48
+				},
+				"homingSpeed": 50,
+				"rotationDistance": 40,
+				"driver": "BTT-TMC5160-PRO-11",
+				"stepper": "LDO-42STH60-3004AH"
+			},
+			{
+				"axis": "x1",
+				"axisDescription": "The second A motor (rear-left) in the AWD CoreXY system",
+				"current": 1.768,
+				"voltage": 48,
+				"performanceMode": {
+					"current": 2.121,
+					"voltage": 48
+				},
+				"homingSpeed": 50,
+				"rotationDistance": 40,
+				"driver": "BTT-TMC5160-PRO-11",
+				"stepper": "LDO-42STH60-3004AH"
+			},
+			{
+				"axis": "y",
+				"axisDescription": "The B motor (front-right) in the AWD CoreXY system",
+				"current": 1.768,
+				"voltage": 48,
+				"performanceMode": {
+					"current": 2.121,
+					"voltage": 48
+				},
+				"homingSpeed": 50,
+				"rotationDistance": 40,
+				"driver": "BTT-TMC5160-PRO-11",
+				"stepper": "LDO-42STH60-3004AH"
+			},
+			{
+				"axis": "y1",
+				"axisDescription": "The second B motor (rear-right) in the AWD CoreXY system",
+				"current": 1.768,
+				"voltage": 48,
+				"performanceMode": {
+					"current": 2.121,
+					"voltage": 48
+				},
+				"homingSpeed": 50,
+				"rotationDistance": 40,
+				"driver": "BTT-TMC5160-PRO-11",
+				"stepper": "LDO-42STH60-3004AH"
+			},
+			{
+				"axis": "z",
+				"axisDescription": "The Z motor located on the front left of the bottom of the printer",
+				"current": 0.8,
+				"performanceMode": {
+					"current": 1.3
+				},
+				"driver": "BTT-TMC2209-13",
+				"stepper": "LDO-42STH48-2004AC",
+				"rotationDistance": 40,
+				"gearRatio": "80:16"
+			},
+			{
+				"axis": "z1",
+				"axisDescription": "The Z motor located on the rear left of the bottom of the printer",
+				"current": 0.8,
+				"performanceMode": {
+					"current": 1.3
+				},
+				"driver": "BTT-TMC2209-13",
+				"stepper": "LDO-42STH48-2004AC",
+				"rotationDistance": 40,
+				"gearRatio": "80:16"
+			},
+			{
+				"axis": "z2",
+				"axisDescription": "The Z motor located on the rear right of the bottom of the printer",
+				"current": 0.8,
+				"performanceMode": {
+					"current": 1.3
+				},
+				"driver": "BTT-TMC2209-13",
+				"stepper": "LDO-42STH48-2004AC",
+				"rotationDistance": 40,
+				"gearRatio": "80:16"
+			},
+			{
+				"axis": "z3",
+				"axisDescription": "The Z motor located on the front right of the bottom of the printer",
+				"current": 0.8,
+				"performanceMode": {
+					"current": 1.3
+				},
+				"driver": "BTT-TMC2209-13",
+				"stepper": "LDO-42STH48-2004AC",
+				"rotationDistance": 40,
+				"gearRatio": "80:16"
+			},
+			{
+				"axis": "extruder",
+				"axisDescription": "The extruder motor used for your toolhead",
+				"current": 0.707,
+				"driver": "BTT-TMC2209-13",
+				"stepper": "LDO-36STH20-1004AHG",
+				"rotationDistance": 0
+			}
+		]
+	}
+}
