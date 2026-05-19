@@ -1,12 +1,12 @@
 {
 	"$schema": "../printer-definition.schema.json",
 	"name": "V2.4 AWD",
-	"description": "CoreXY printer with floating gantry from Voron Design with All-Wheel Drive (4 CoreXY motors). Requires a 9-driver control board such as the BTT Octopus Max EZ.",
+	"description": "CoreXY printer with floating gantry from Voron Design with All-Wheel Drive (4 CoreXY motors, 48V). The extruder is driven by the toolboard. Recommended boards: BTT Manta M8P v2.0 (8 drivers) or BTT Octopus Max EZ (10 drivers).",
 	"manufacturer": "Voron Design",
 	"documentationLink": "https://os.ratrig.com/docs/printers/v-24",
 	"image": "voron-v24-awd.png",
 	"template": "voron-v24-printer.template.cfg",
-	"driverCountRequired": 9,
+	"driverCountRequired": 8,
 	"sizes": {
 		"250": {
 			"x": 250,
@@ -43,16 +43,17 @@
 		}
 	},
 	"defaults": {
-		"board": "btt-octopus-max-ez",
+		"board": "btt-manta-m8p-20",
 		"toolheads": [
 			{
 				"axis": "x",
 				"extruder": "clockwork-2",
+				"toolboard": "btt-sb-2209-20-rp2040",
 				"hotend": "dragon-high-flow",
-				"partFan": "4pin",
-				"hotendFan": "2pin",
+				"partFan": "4pin-toolboard",
+				"hotendFan": "2pin-toolboard",
 				"probe": "probe",
-				"xEndstop": "endstop",
+				"xEndstop": "endstop-toolboard",
 				"yEndstop": "endstop"
 			}
 		],
@@ -161,14 +162,6 @@
 				"rotationDistance": 40,
 				"gearRatio": "80:16"
 			},
-			{
-				"axis": "extruder",
-				"axisDescription": "The extruder motor used for your toolhead",
-				"current": 0.707,
-				"driver": "BTT-TMC2209-13",
-				"stepper": "LDO-36STH20-1004AHG",
-				"rotationDistance": 0
-			}
 		]
 	}
 }
