@@ -13,6 +13,10 @@ pushd "${KLIPPER_DIR}" || exit 1
 chown "${RATOS_USERNAME}":"${RATOS_USERGROUP}" -R "${KLIPPER_DIR}"
 sudo -u "${RATOS_USERNAME}" make olddefconfig
 sudo -u "${RATOS_USERNAME}" make clean
-sudo -u "${RATOS_USERNAME}" make
+if grep -q "CONFIG_MACH_RP2040=y" .config || grep -q "CONFIG_MACH_RPXXXX=y" .config; then
+	sudo -u "${RATOS_USERNAME}" make out/klipper.uf2
+else
+	sudo -u "${RATOS_USERNAME}" make
+fi
 
 popd || exit 1
