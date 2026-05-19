@@ -59,6 +59,7 @@ MOONRAKER_DIR=${REAL_HOME}/moonraker
 KLIPPER_DIR=${REAL_HOME}/klipper
 KLIPPER_ENV=${REAL_HOME}/klippy-env
 BEACON_DIR=${REAL_HOME}/beacon
+CARTOGRAPHER_DIR=${REAL_HOME}/cartographer-klipper
 EOF
 	# Set permissions if possible (only if we can write to the file)
 	if [ -w "$envFile" ]; then

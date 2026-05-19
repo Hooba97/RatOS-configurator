@@ -577,6 +577,7 @@ main() {
 	ensure_pip_requirements || exit_code=1
 	patch_klipperscreen_service_restarts || exit_code=1
 	install_beacon || exit_code=1
+	install_cartographer || exit_code=1
 	install_hooks || exit_code=1
 	remove_old_postprocessor || exit_code=1
 	verify_registered_extensions || exit_code=1

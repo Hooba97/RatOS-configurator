@@ -107,6 +107,36 @@ install_beacon()
 	# Beacon extension will be registered in verify_registered_extensions
 }
 
+install_cartographer()
+{
+    report_status "Installing cartographer module..."
+
+	if [ -d "$CARTOGRAPHER_DIR" ] || [ -e "$KLIPPER_DIR/klippy/extras/cartographer.py" ]; then
+		echo "cartographer: cartographer already installed, skipping..."
+		return
+	fi
+
+	if [ ! -d "$KLIPPER_DIR" ] || [ ! -d "$KLIPPER_ENV" ]; then
+		echo "cartographer: klipper or klippy env doesn't exist"
+		return
+	fi
+
+	git clone https://github.com/Cartographer3D/cartographer-klipper.git "$CARTOGRAPHER_DIR"
+	chown -R "${RATOS_USERNAME}:${RATOS_USERGROUP}" "$CARTOGRAPHER_DIR"
+
+	# install cartographer requirements to env
+	if [ -f "$CARTOGRAPHER_DIR/requirements.txt" ]; then
+		echo "cartographer: installing python requirements to env."
+		if [ "$EUID" -eq 0 ]; then
+			su - "${RATOS_USERNAME}" -c "\"${KLIPPER_ENV}\"/bin/pip install -r \"${CARTOGRAPHER_DIR}\"/requirements.txt"
+		else
+			"${KLIPPER_ENV}"/bin/pip install -r "${CARTOGRAPHER_DIR}"/requirements.txt
+		fi
+	fi
+
+	# Cartographer extension will be registered in verify_registered_extensions
+}
+
 regenerate_config() {
     report_status "Regenerating RatOS configuration via RatOS Configurator..."
 
@@ -268,6 +298,7 @@ verify_registered_extensions()
 		["fastconfig"]=$(realpath "${RATOS_PRINTER_DATA_DIR}/config/RatOS/klippy/fastconfig.py")
 		["named_offsets"]=$(realpath "${RATOS_PRINTER_DATA_DIR}/config/RatOS/klippy/named_offsets.py")
 		["beacon_user_z_offset"]=$(realpath "${RATOS_PRINTER_DATA_DIR}/config/RatOS/klippy/beacon_user_z_offset.py")
+        ["cartographer"]=$(realpath "${CARTOGRAPHER_DIR}/cartographer.py")
     )
 
 	declare -A kinematics_extensions=(
