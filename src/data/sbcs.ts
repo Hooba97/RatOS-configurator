@@ -22,7 +22,4 @@ export const BTT_CB2: SBC = {
 	documentationLink: 'https://os.ratrig.com/docs/boards/btt/cb2',
 };
 
-export const SBCS: SBC[] = [
-	BTT_CB1,
-	BTT_CB2,
-];
+export const SBCS: SBC[] = [BTT_CB1, BTT_CB2];
