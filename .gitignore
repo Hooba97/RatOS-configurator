@@ -1,7 +1,7 @@
 # next.js
-/src/.next/
-/src/out/
-/src/build/
+# /src/.next/
+# /src/out/
+# /src/build/
 
 # Bin build
 /src/bin/*.js

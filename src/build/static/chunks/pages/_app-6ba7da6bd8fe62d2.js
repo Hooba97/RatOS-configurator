@@ -1,0 +1,2 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[2888],{20470:function(_,n,e){(window.__NEXT_P=window.__NEXT_P||[]).push(["/_app",function(){return e(58968)}])}},function(_){var __webpack_exec__=function(n){return _(_.s=n)};_.O(0,[9774,179],function(){return __webpack_exec__(20470),__webpack_exec__(47146)}),_N_E=_.O()}]);
+//# sourceMappingURL=_app-6ba7da6bd8fe62d2.js.map
